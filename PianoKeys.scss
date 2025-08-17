@@ -1,0 +1,76 @@
+$white-key-count: 52;
+$key-height: 120px;
+$piano-width: 100%;
+$white-key-width: calc(#{$piano-width} / #{$white-key-count});
+$black-key-width: calc(#{$white-key-width} * 0.6);
+
+.piano-keys {
+  display: flex;
+  position: relative;
+  user-select: none;
+  height: $key-height;
+  width: $piano-width;
+  background: #f5f5f5;
+  border: 2px solid #333;
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
+
+  .white-keys {
+    display: flex;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .black-keys {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: calc(#{$key-height} * 0.6);
+    z-index: 2;
+  }
+
+  .key {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-sizing: border-box;
+    transition: transform 0.1s ease, background 0.1s ease;
+  }
+
+  .white {
+    width: $white-key-width;
+    height: $key-height;
+    background: linear-gradient(#fff, #e0e0e0 75%);
+    border: 1px solid #888;
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+
+    &:hover {
+      background: linear-gradient(#f0f0f0, #d0d0d0 75%);
+    }
+
+    &:active, &.active {
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.7);
+      background: linear-gradient(#FFFF00, #FFFF00 75%);
+    }
+  }
+
+  .black {
+    width: $black-key-width;
+    height: calc(#{$key-height} * 0.6);
+    background: linear-gradient(#333, #111 50%);
+    box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.2), 0 2px 4px rgba(0, 0, 0, 0.5);
+    border: 1px solid #000;
+    position: absolute;
+    top: 0;
+
+    &:hover {
+      background: linear-gradient(#444, #222 50%);
+    }
+
+    &:active, &.active {
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.7);
+      background: linear-gradient(#FFA500, #FFA500 50%);
+    }
+  }
+}
